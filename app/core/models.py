@@ -14,6 +14,17 @@ class UserManger(BaseUserManager):
 
         return user
 
+
+    def create_superuser(self, email, password):
+        """Creates and saves a supper user"""
+        user = self.create_user(email, password)
+        user.is_supperuser = True
+        user.save(using=self.db)
+
+        return user
+
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     """costum user modle that supporst wmail instead of username"""
     email = models.EmailField(max_length=264, unique=True)
