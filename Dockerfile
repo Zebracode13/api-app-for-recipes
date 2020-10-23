@@ -1,5 +1,6 @@
 FROM python:3.7-alpine
 LABEL key="Zele Smith"
+
 ENV PYTHONUNBUFFERD 1
 
 COPY ./requirements.txt /requirements.txt
