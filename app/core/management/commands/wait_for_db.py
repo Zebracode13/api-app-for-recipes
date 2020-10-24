@@ -5,9 +5,9 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-"""django command to wait untill db is availbale"""
+    """django command to wait untill db is availbale"""
 
-    def handelrs(self, *args, **opertions):
+    def handle(self, *args, **options):
         self.stdout.write('Waiting for the data base....')
         db_conn = None 
         while not db_conn:
