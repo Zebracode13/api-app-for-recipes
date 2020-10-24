@@ -1,2 +1,2 @@
-# pi-app-for-recipes
+# python-django-app-for-recipes
 recipe app api source code
