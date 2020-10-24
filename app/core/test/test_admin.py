@@ -6,14 +6,14 @@ class AdminSiteTests(TestCase):
     def setup(self):
         """Test for users in application"""
         self.client = Client()
-        self.adminuser = get_user_model().objects.create_superuser(email='zele@gmail.com', password='test46')
+        self.admin_user = get_user_model().objects.create_superuser(email='zele@gmail.com', password='test46')
         self.client.force_login(self.admin_user)
-        self.user = get_user_model().objects.create_user(email='first_eamil@gmail.com', password='passme1234', name='Test is my first test')
+        self.user = get_user_model().objects.create_user(email='z@gmail.com', password='pass234', name='Test is my first test')
 
     def test_user_listed(self):
         """Test that users are listed on user page"""
         url = reverse('admin:core_user_changelist')
-        resp = self.client.get(url)   
+        resp = self.client.get(url)
         self.assertContains(resp, self.user.name)
         self.assertContains(resp, self.user.email)
     
@@ -30,4 +30,4 @@ class AdminSiteTests(TestCase):
         url = reverse('admin:core_user_add')
         resp= self.client.get(url)
 
-        self.assertEqual(resp, status_code, 200)
+        self.assertEqual(resp.status_code, 200)
